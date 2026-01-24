@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ShowAList"
 include(":app")
- 
+include(":core:core-network")
