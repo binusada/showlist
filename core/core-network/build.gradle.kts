@@ -36,4 +36,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.converter.kotlinx.serialization)
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(libs.hilt.android)
+    annotationProcessor(libs.hilt.android.compiler)
 }

@@ -1,4 +1,15 @@
 package com.app.codefuse.core_network.interceptors
 
-class AuthInterceptor {
+import okhttp3.Interceptor
+import okhttp3.Response
+
+class AuthInterceptor(
+    private val tokenProvider: () -> String?
+) : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val token = tokenProvider()
+        val request = chain.request().newBuilder()
+        token?.let { request.addHeader("Authorization", "Bearer $it") }
+        return chain.proceed(request.build())
+    }
 }
