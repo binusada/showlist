@@ -31,6 +31,13 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:core-domain"))
+    implementation(project(":core:core-network"))
+    implementation(libs.retrofit)
+    implementation(libs.converter.kotlinx.serialization)
+    implementation(libs.hilt.android)
+    annotationProcessor(libs.hilt.android.compiler)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
