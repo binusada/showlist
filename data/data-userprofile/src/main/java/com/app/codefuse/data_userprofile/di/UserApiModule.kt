@@ -3,11 +3,13 @@ package com.app.codefuse.data_userprofile.di
 import com.app.codefuse.data_userprofile.api.UserProfileApi
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
-@Singleton
+@InstallIn(SingletonComponent::class)
 object UserApiModule {
 
     @Provides

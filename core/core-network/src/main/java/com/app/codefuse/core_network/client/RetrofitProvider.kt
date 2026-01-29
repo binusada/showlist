@@ -5,8 +5,9 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import javax.inject.Inject
 
-class RetrofitProvider(
+class RetrofitProvider @Inject constructor(
     private val okHttpClient: OkHttpClient,
     private val json: Json
 ) {
