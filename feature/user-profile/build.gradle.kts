@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -28,12 +29,38 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
+    implementation(project(":core:core-domain"))
+    implementation(project(":data:data-userprofile"))
+
+    implementation(libs.retrofit)
+    implementation(libs.converter.kotlinx.serialization)
+
+    implementation(libs.hilt.android)
+    annotationProcessor(libs.hilt.android.compiler)
+    implementation(libs.navigation.hilt.compose)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.navigation.common.ktx)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.runtime)
+
+    implementation(libs.androidx.material3)
     implementation(libs.material)
+    implementation(libs.coil3.coil.compose)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

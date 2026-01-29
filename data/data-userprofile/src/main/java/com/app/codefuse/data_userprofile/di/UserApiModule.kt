@@ -1,16 +1,14 @@
-package com.app.codefuse.data_userprofile.module
+package com.app.codefuse.data_userprofile.di
 
 import com.app.codefuse.data_userprofile.api.UserProfileApi
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
-class UserProfileNetworkModule {
+@Singleton
+object UserApiModule {
 
     @Provides
     @Singleton
