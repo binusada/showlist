@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
+    //alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -38,6 +41,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":feature:user-profile"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -50,7 +55,8 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
-    annotationProcessor(libs.hilt.android.compiler)
+    implementation(libs.navigation.hilt.compose)
+    ksp(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
