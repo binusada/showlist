@@ -5,7 +5,7 @@ import com.app.codefuse.data_userprofile.model.UserDto
 
 fun UserDto.toDomain(): User {
     return User(
-        fullName = "${name.first} ${name.last}",
+        fullName = "${name.title} ${name.first} ${name.last}",
         imageUrl = picture.large,
         email = email,
         location = "${location.city}, ${location.country}"

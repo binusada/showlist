@@ -61,16 +61,6 @@ fun ProfileList(profiles: List<User>) {
 }
 
 @Composable
-fun ProfileCard(user: User) {
-    Card(modifier = Modifier.padding(8.dp)) {
-        Text(
-            text = user.fullName,
-            modifier = Modifier.padding(16.dp)
-        )
-    }
-}
-
-@Composable
 fun ErrorView(message: String, onRetry: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),

@@ -1,5 +1,6 @@
 package com.app.codefuse.user_profile.ui.list
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -39,6 +40,7 @@ fun ProfileCard(user: User, onClick: () -> Unit = {}) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             // AsyncImage is provided by Coil
+            Log.d("----", user.imageUrl)
             AsyncImage(
                 model = user.imageUrl,
                 contentDescription = "Profile Picture",
