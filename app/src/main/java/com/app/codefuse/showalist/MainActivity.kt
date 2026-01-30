@@ -5,14 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.app.codefuse.showalist.ui.theme.ShowAListTheme
-import com.app.codefuse.user_profile.ui.list.ProfileListScreen
+import com.app.codefuse.user_profile.navigation.PROFILE_LIST_ROUTE
+import com.app.codefuse.user_profile.navigation.profileGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,14 +25,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
                     val navController = rememberNavController()
-                    NavHost(
-                        navController = navController,
-                        startDestination = "profileList",
-                        modifier = Modifier.padding(innerPadding)
-                    ) {
-                        composable("profileList") {
-                            ProfileListScreen()
-                        }
+                    NavHost(navController = navController,
+                        startDestination = PROFILE_LIST_ROUTE) {
+                        profileGraph(navController)
                     }
                 }
             }

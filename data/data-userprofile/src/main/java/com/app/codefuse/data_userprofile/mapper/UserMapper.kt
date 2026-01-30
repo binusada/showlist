@@ -8,6 +8,7 @@ fun UserDto.toDomain(): User {
         fullName = "${name.title} ${name.first} ${name.last}",
         imageUrl = picture.large,
         email = email,
-        location = "${location.city}, ${location.country}"
+        location = "${location.city}, ${location.country}",
+        id = login.uuid
     )
 }

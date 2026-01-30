@@ -27,7 +27,8 @@ import com.app.codefuse.user_profile.model.ProfileListUiState
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileListScreen(
-    viewModel: ProfileListViewModel = hiltViewModel()
+    viewModel: ProfileListViewModel = hiltViewModel(),
+    onProfileClick: (String) -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
 
@@ -42,8 +43,13 @@ fun ProfileListScreen(
                 .padding(padding)
         ) {
             when (val s = state) {
-                is ProfileListUiState.Loading -> CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                is ProfileListUiState.Success -> ProfileList(s.profiles)
+                is ProfileListUiState.Loading -> CircularProgressIndicator(
+                    modifier = Modifier.align(
+                        Alignment.Center
+                    )
+                )
+
+                is ProfileListUiState.Success -> ProfileList(s.profiles, onProfileClick)
                 is ProfileListUiState.Error -> ErrorView(s.message) { viewModel.loadProfiles() }
             }
         }
@@ -51,14 +57,18 @@ fun ProfileListScreen(
 }
 
 @Composable
-fun ProfileList(profiles: List<User>) {
+fun ProfileList(
+    profiles: List<User>,
+    onProfileClick: (String) -> Unit
+    ) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(profiles) { user ->
             ProfileCard(
                 fullName = user.fullName,
                 email = user.email,
                 location = user.location,
-                imageUrl = user.imageUrl
+                imageUrl = user.imageUrl,
+                onClick = { onProfileClick(user.id) }
             )
         }
     }
