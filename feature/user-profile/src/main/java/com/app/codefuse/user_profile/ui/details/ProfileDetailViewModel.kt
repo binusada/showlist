@@ -1,5 +1,6 @@
 package com.app.codefuse.user_profile.ui.details
 
+import android.util.Log
 import com.app.codefuse.core_domain.models.User
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -31,7 +32,7 @@ class ProfileDetailViewModel @Inject constructor(
     private fun fetchUserById(userId: String) {
         viewModelScope.launch {
             try {
-                val userList = userRepository.fetchProfiles(50) // Or from a local cache
+                val userList = userRepository.fetchProfiles(50)
                 _user.value = userList.find { it.id == userId }
             } catch (e: Exception) {
                 _user.value = null

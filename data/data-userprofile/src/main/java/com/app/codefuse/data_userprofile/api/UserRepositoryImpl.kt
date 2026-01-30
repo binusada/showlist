@@ -12,7 +12,7 @@ class UserRepositoryImpl @Inject constructor(
 ) : UserProfileRepository {
 
     override suspend fun fetchProfiles(count: Int): List<User> {
-        val response = apiService.getUsers(resultCount = count)
+        val response = apiService.getUsers(resultCount = count, seed = "myApp")
         Log.d("----", response.toString())
         return response.results.map { it.toDomain() }
     }

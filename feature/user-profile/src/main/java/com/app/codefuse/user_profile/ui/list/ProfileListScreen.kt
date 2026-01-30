@@ -1,5 +1,6 @@
 package com.app.codefuse.user_profile.ui.list
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -68,7 +69,10 @@ fun ProfileList(
                 email = user.email,
                 location = user.location,
                 imageUrl = user.imageUrl,
-                onClick = { onProfileClick(user.id) }
+                onClick = {
+                    Log.d("passing --->-", user.id)
+                    onProfileClick(user.id)
+                }
             )
         }
     }
