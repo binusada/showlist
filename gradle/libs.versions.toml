@@ -75,6 +75,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 
 #Coil
 coil3-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coilCompose" }
 
 #Networking
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }

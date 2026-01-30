@@ -1,6 +1,7 @@
 package com.app.codefuse.user_profile.ui.list
 
 import android.util.Log
+import androidx.compose.foundation.R
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,10 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.app.codefuse.core_domain.models.User
 
 @Composable
@@ -39,16 +44,37 @@ fun ProfileCard(user: User, onClick: () -> Unit = {}) {
             modifier = Modifier.padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // AsyncImage is provided by Coil
             Log.d("----", user.imageUrl)
             AsyncImage(
-                model = user.imageUrl,
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(user.imageUrl)
+                    .listener(
+                        onError = { _, result ->
+                            Log.e("---IMAGE_ERROR", "Error loading image: ${result.throwable.message}")
+                            Log.e("---IMAGE_ERROR", "Error loading image: ${result.throwable}")
+                        },
+                        onSuccess = { _, _ ->
+                            Log.d("---IMAGE_SUCCESS", "Image loaded successfully")
+                        }
+                    )
+                    .crossfade(true)
+                    .build(),
                 contentDescription = "Profile Picture",
+//                placeholder = painterResource(), // Replace with your placeholder
+//                error = painterResource(R.drawable.ic_launcher_background),       // Replace with your error image
                 modifier = Modifier
                     .size(64.dp)
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
             )
+//            AsyncImage(
+//                model = user.imageUrl,
+//                contentDescription = "Profile Picture",
+//                modifier = Modifier
+//                    .size(64.dp)
+//                    .clip(CircleShape),
+//                contentScale = ContentScale.Crop
+//            )
 
             Spacer(modifier = Modifier.width(16.dp))
 
