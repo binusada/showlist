@@ -1,6 +1,5 @@
 package com.app.codefuse.user_profile.ui.details
 
-import android.util.Log
 import com.app.codefuse.core_domain.models.User
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
