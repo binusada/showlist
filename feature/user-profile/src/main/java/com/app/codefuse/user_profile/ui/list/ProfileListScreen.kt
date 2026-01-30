@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -19,9 +18,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.app.codefuse.core_domain.models.User
+import com.app.codefuse.core_ui.user.ProfileCard
 import com.app.codefuse.user_profile.model.ProfileListUiState
 
 
@@ -55,7 +54,12 @@ fun ProfileListScreen(
 fun ProfileList(profiles: List<User>) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(profiles) { user ->
-            ProfileCard(user)
+            ProfileCard(
+                fullName = user.fullName,
+                email = user.email,
+                location = user.location,
+                imageUrl = user.imageUrl
+            )
         }
     }
 }

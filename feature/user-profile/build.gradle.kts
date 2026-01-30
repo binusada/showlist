@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:core-ui"))
     implementation(project(":core:core-domain"))
     implementation(project(":data:data-userprofile"))
 
