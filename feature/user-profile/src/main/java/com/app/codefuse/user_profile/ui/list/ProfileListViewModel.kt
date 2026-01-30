@@ -32,6 +32,7 @@ class ProfileListViewModel @Inject constructor(
                 _uiState.value = ProfileListUiState.Success(users)
             } catch (e: Exception) {
                 _uiState.value = ProfileListUiState.Error(e.localizedMessage ?: "Unknown Error")
+                e.printStackTrace()
             }
         }
     }

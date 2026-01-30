@@ -17,6 +17,5 @@ class RetrofitProvider @Inject constructor(
             .client(okHttpClient)
             .addConverterFactory(
                 json.asConverterFactory("application/json".toMediaType())
-            )
-            .build()
+            ).build()
 }

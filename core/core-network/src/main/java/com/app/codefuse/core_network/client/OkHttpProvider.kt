@@ -4,8 +4,9 @@ import com.app.codefuse.core_network.config.NetworkConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class OkHttpProvider(
+class OkHttpProvider @Inject constructor (
     private val interceptors: Set<Interceptor>
 ) {
     fun create(): OkHttpClient =
